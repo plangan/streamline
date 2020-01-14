@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  authentication.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=server=db4free.net;user id=icecap_1024_v2;password=admin123;port=3306;database=icecap_1024_v2;TreatTinyAsBoolean=false
+      - ServerVersion=8.0.17
+      - TokenSecret=3ce1637ed40041cd94d4853d3e766c4d
+      - TokenSecret2=3ce1637ed40041cd94d4853d3e766c4e
+    ports:
+      - "5101:80" # Important: In a production environment your should remove the external port (5101) kept here for microservice debugging purposes.
+
+  administration.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=server=db4free.net;user id=icecap_1024_v2;password=admin123;port=3306;database=icecap_1024_v2;TreatTinyAsBoolean=false
+      - DbType=mysql
+      - ServerVersion=8.0.17
+      - TokenSecret=3ce1637ed40041cd94d4853d3e766c4d
+    ports:
+      - "5102:80" # Important: In a production environment your should remove the external port (5102) kept here for microservice debugging purposes.
+
+  researcher.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=server=db4free.net;user id=icecap_1024_v2;password=admin123;port=3306;database=icecap_1024_v2;TreatTinyAsBoolean=false
+      - DbType=mysql
+      - ServerVersion=8.0.17
+      - TokenSecret=3ce1637ed40041cd94d4853d3e766c4d
+    ports:
+      - "5103:80" # Important: In a production environment your should remove the external port (5103) kept here for microservice debugging purposes.
+
+  patient.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=server=db4free.net;user id=icecap_1024_v2;password=admin123;port=3306;database=icecap_1024_v2;TreatTinyAsBoolean=false
+      - DbType=mysql
+      - ServerVersion=8.0.17
+      - TokenSecret=3ce1637ed40041cd94d4853d3e766c4e
+    ports:
+      - "5104:80" # Important: In a production environment your should remove the external port (5103) kept here for microservice debugging purposes.
+
+  #webmvc:
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
+  #    - ASPNETCORE_URLS=http://0.0.0.0:80
+  #    - AuthenticationUrl=http://authentication.api
+  #    - AdministrationUrl=http://administration.api
+  #  ports:
+  #    - "5100:80"

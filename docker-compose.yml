@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  authentication.api:
+    image: ${DOCKER_REGISTRY-}authenticationapi
+    build:
+      context: .
+      dockerfile: src/Services/Authentication/Authentication.API/Dockerfile
+
+  administration.api:
+    image: ${DOCKER_REGISTRY-}administrationapi
+    build:
+      context: .
+      dockerfile: src/Services/Administration/Administration.API/Dockerfile
+
+  researcher.api:
+    image: ${DOCKER_REGISTRY-}researcherapi
+    build:
+      context: .
+      dockerfile: src/Services/Researcher/Researcher.API/Dockerfile
+
+  patient.api:
+    image: ${DOCKER_REGISTRY-}patientapi
+    build:
+      context: .
+      dockerfile: src/Services/Patient/Patient.API/Dockerfile
+
+  #webmvc:
+  #  image: ${DOCKER_REGISTRY-}webmvc
+  #  build:
+  #    context: .
+  #    dockerfile: src/Web Apps/WebMVC/Dockerfile    
+  #  depends_on:
+  #    - authentication.api
+  #    - administration.api
